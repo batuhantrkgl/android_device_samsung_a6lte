@@ -7,20 +7,21 @@
 $ mkdir shrp ; cd shrp
 
 # Init repo
-$ repo init --depth=1 -u git://github.com/SKYHAWK-Recovery-Project/platform_manifest_twrp_omni.git -b android-9.0
+$ repo init --depth=1 -u https://github.com/SHRP/manifest -b v3_9.0
 
-# Clone my local repo
-$ git clone https://github.com/samsungexynos7870/android_manifest_samsung_a6lte.git -b skyhawk .repo/local_manifests
+# Clone my device tree
+$ git clone https://github.com/samsungexynos7870/android_device_samsung_a6lte.git -b skyhawk device/samsung/a6lte
 
 # Sync
 $ repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j`nproc`
 
 # Build
-$ mv device/samsung/a6lte/build_skyhawk.sh .
-$ . build_skyhawk.sh a6lte
+$ . build/envsetup.sh && lunch omni_a6lte-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka recoveryimage
 ```
 ## Credits
 2019 @Astrako
+
+2022 @Batuhantrkgl
 
 ## Contact
 Telegram support group: https://t.me/joinchat/D1Jk_VbieGBXOWZt2y8O7A
